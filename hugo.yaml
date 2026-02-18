@@ -1,0 +1,46 @@
+baseURL: "http://localhost:1313/"
+languageCode: "da"
+title: "Oliver Møller-Jensen"
+theme: "hello-4s3ti"
+
+params:
+  author:
+    name: "Oliver Møller-Jensen"
+
+  defaultTheme: "dark"
+  EnableThemeToggle: true
+
+  backgroundImage: "background.png"
+  backgroundEffects: true
+
+  logo:
+    logoText: "Oliver"
+
+  social:
+    - name: "github"
+      url: "https://github.com/olivermjmj"
+
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/oliver-m%C3%B8ller-jensen-a621b1321/"
+
+menu:
+  main:
+    - identifier: "projects"
+      name: "Projects"
+      url: "/projects"
+      weight: 1
+
+    - identifier: "dndshop"
+      name: "D&D Shop Backend"
+      url: "/projects/dndshop"
+      parent: "projects"
+
+    - identifier: "carport"
+      name: "Carport Webshop"
+      url: "/projects/carport"
+      parent: "projects"
+
+    - identifier: "about"
+      name: "About"
+      url: "/about"
+      weight: 2
