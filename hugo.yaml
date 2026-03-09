@@ -1,14 +1,23 @@
-baseURL: "http://localhost:1313/"
+baseURL: "https://olivermjmj.github.io/Portfolio/"
 languageCode: "da"
 title: "Oliver Møller-Jensen"
 theme: "hello-4s3ti"
 
-params:
-  author:
-    name: "Oliver Møller-Jensen"
+disableKinds:
+  - RSS
 
+author:
+  name: "Oliver Møller-Jensen"
+  email: "olivermjmj@outlook.dk"
+  
+fontAwesome:
+  all: true
+
+params:
   defaultTheme: "dark"
   EnableThemeToggle: true
+  homeTitle: "Oliver Møller-Jensen"
+  socialIcons: true
 
   backgroundImage: "background.png"
   backgroundEffects: true
@@ -18,9 +27,11 @@ params:
 
   social:
     - name: "github"
+      icon: "fa-brands fa-github"
       url: "https://github.com/olivermjmj"
 
     - name: "linkedin"
+      icon: "fa-brands fa-linkedin"
       url: "https://www.linkedin.com/in/oliver-m%C3%B8ller-jensen-a621b1321/"
 
 menu:

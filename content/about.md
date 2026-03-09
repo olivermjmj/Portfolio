@@ -1,21 +1,32 @@
-+++
-title = "About"
-date = "2014-04-09"
-aliases = ["about-us","about-hugo","contact"]
-hideTitle = true
-hidelanguage = true
-[ author ]
-  name = "Hugo Authors"
-+++
+# About Me
 
-Hugo is the **world’s fastest framework for building websites**. It is written in Go.
+Hey i'm Oliver, an AP Degree Computer Science student (Datamatiker) from Denmark with a strong interest in backend development.
 
-It makes use of a variety of open source projects including:
+I enjoy working with Java, databases, system design, and building structured backend solutions. My main focus is creating maintainable systems with clean architecture, solid database models, and clear separation between layers such as DAO, service, and API.
 
-* https://github.com/russross/blackfriday
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+I work primarily with Java, Javalin, JPA/Hibernate, PostgreSQL, Maven, Docker, and Git/GitHub. Many of my projects are backend-focused and built to strengthen both my technical skills and my portfolio.
 
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+This website is my portfolio space, where I document projects, development logs, and technical progress over time.
+
+## Technologies I Work With
+
+- Java
+- Javalin
+- JPA / Hibernate
+- PostgreSQL
+- Docker
+- Maven
+- Git / GitHub
+
+## Interests
+
+- Backend development
+- Database design
+- REST APIs
+- Clean architecture
+- Scalable systems
+
+## Links
+
+- [GitHub](https://github.com/olivermjmj)
+- [LinkedIn](https://www.linkedin.com/in/oliver-m%C3%B8ller-jensen-a621b1321/)
