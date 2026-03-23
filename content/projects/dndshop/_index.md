@@ -3,8 +3,10 @@ title: "D&D Shop Backend"
 ---
 
 ## Description
-The D&D Shop Backend is a backend-focused portfolio project developed as part of my 3rd semester software development studies.  
-The system simulates the backend of a fantasy-themed online shop where users can browse and purchase items inspired by Dungeons & Dragons.
+The D&D Shop Backend is a backend-focused portfolio project developed during my 3rd semester in software development.  
+The project simulates the backend of a fantasy-themed online shop inspired by Dungeons & Dragons, with a focus on domain modeling, layered architecture, persistence, and external API integration.
+
+Rather than being a simple CRUD application, the project is designed to explore how a larger backend system can be structured using reusable DAO abstractions, service-layer business logic, DTO mapping, and scheduled synchronization of external data.
 
 ## Tech Stack
 
@@ -27,16 +29,29 @@ The system simulates the backend of a fantasy-themed online shop where users can
 - Maven
 - Docker
 - Git / GitHub
+- Jackson
 
 **External APIs**
 - D&D 5e API
 
 ## Features
-- RESTful API for managing shop items and users
-- Integration with the D&D 5e API for item data
+- RESTful API for managing users, items, orders, and related shop data
+- External API integration for importing D&D-inspired item data
+- Price normalization logic for imported equipment data
+- Concurrency-based item import using `ExecutorService`
 - Database persistence with JPA / Hibernate
-- Layered backend architecture
-- Modular and extensible system design
+- Generic DAO structure for reusable CRUD logic
+- Layered backend architecture with separation of concerns
+- Designed for future scheduled synchronization of imported data
+
+## Learning Focus
+This project is primarily focused on:
+- domain-driven backend design
+- persistence and entity relationships
+- reusable data access patterns
+- service-layer architecture
+- external API integration and DTO mapping
+- testing of isolated business logic
 
 ## GitHub
 [View the repository on GitHub](https://github.com/olivermjmj)
