@@ -34,55 +34,57 @@
             <div class="content">{{ .Content }}</div>
             {{ end }}
                 <div class="posts">
-                {{ range $paginator.Pages }}
+                {{ range $index, $page := $paginator.Pages }}
                 <div class="post on-list">
-                    <h1 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h1>
+                    <div class="post-index">{{ printf "%04d" (add $index 1) }}</div>
+
+                    <h1 class="post-title"><a href="{{ $page.Permalink }}">{{ $page.Title | markdownify }}</a></h1>
                     <div class="post-meta">
-                    {{ if .Date }}
+                    {{ if $page.Date }}
                         <span class="post-date">
-                        {{ .Date.Format ($.Site.Params.DateFormatList | default "2006-01-02") }}
+                        {{ $page.Date.Format ($.Site.Params.DateFormatList | default "2006-01-02") }}
                         </span>
                         {{ if $.Site.Params.LastModDisplay }}
-                            {{ partial "lastmod.html" . }}
+                            {{ partial "lastmod.html" $page }}
                         {{ end }}
                     {{ end }}
                         <br>
                     {{ if $.Site.Params.ShowReadingTime }}
                         <i class="fa-solid fa-clock"></i>
-                        {{ i18n "readingTime" .Page.ReadingTime }}
+                        {{ i18n "readingTime" $page.ReadingTime }}
                     {{ end }}
                     </div>
-                    {{ if .Site.Params.tags }}
+                    {{ if $.Site.Params.tags }}
                         <span class="post-tags">
-                        {{ range .Params.tags }}
+                        {{ range $page.Params.tags }}
                             <a href="{{ (urlize (printf "tags/%s" . )) | absLangURL }}/">#{{ . }}</a>&nbsp;
                         {{ end }}
                         </span>
                     {{ end }}
                     <div class="post-content">
-                        {{ with .Description }}
+                        {{ with $page.Description }}
                             {{ . | markdownify }}
                         {{ else }}
-                            {{ if .Truncated }}
-                                {{ .Summary }}
+                            {{ if $page.Truncated }}
+                                {{ $page.Summary }}
                             {{ end }}
                         {{ end }}
                     </div>
-                    {{ if not .Site.Params.hideReadMore }}
-                        {{ if .Site.Params.ReadMoreText }}
-                        <div> 
-                            <a class="read-more" href="{{.RelPermalink}}">
+                    {{ if not $.Site.Params.hideReadMore }}
+                        {{ if $.Site.Params.ReadMoreText }}
+                        <div>
+                            <a class="read-more" href="{{ $page.RelPermalink }}">
                                 {{ i18n "readMore"}}
                             </a>
                         </div>
                         {{ else }}
                         <div>
-                            <a class="read-more button" href="{{.RelPermalink}}">{{ i18n "readMore"}} →</a>
+                            <a class="read-more button" href="{{ $page.RelPermalink }}">{{ i18n "readMore"}} →</a>
                         </div>
                         {{ end }}
                     {{ end }}
-                </div> 
-            {{ end }}
+                </div>
+                {{ end }}
         {{ end }}
         <!-- End Posts -->
        
