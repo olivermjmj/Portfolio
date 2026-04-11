@@ -44,4 +44,4 @@ The goal of the project is not just to build a CRUD system, but to work with a l
 - Layered backend design with separation of concerns
 
 ## GitHub
-[View the repository on GitHub](https://github.com/olivermjmj)
+[View the repository on GitHub](https://github.com/olivermjmj/D-D_Shop)
