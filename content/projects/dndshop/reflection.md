@@ -1,3 +1,7 @@
+---
+title: "Reflections"
+---
+
 # Final Project Reflection
 
 This project helped me understand backend development much better in practice than I think smaller exercises would have. Because I worked on it over several weeks, I could feel how one decision affected the next layer later on. What started as entities and DAOs gradually turned into a full backend with DTOs, external API integration, services, async methods, and controllers.
