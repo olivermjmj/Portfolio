@@ -10,14 +10,13 @@ author:
   name: "Oliver Møller-Jensen"
   email: "olivermjmj@outlook.dk"
   
-fontAwesome:
-  all: true
-
 params:
   defaultTheme: "dark"
   EnableThemeToggle: true
   homeTitle: "Oliver Møller-Jensen"
   socialIcons: true
+  customCSS:
+    - "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
   backgroundImage: "background.png"
   backgroundEffects: true
@@ -26,6 +25,10 @@ params:
     logoText: "Oliver"
 
   social:
+    - name: "website"
+      icon: "fa-solid fa-globe"
+      url: "https://showmycode.dk/"
+
     - name: "github"
       icon: "fa-brands fa-github"
       url: "https://github.com/olivermjmj"
@@ -46,9 +49,9 @@ menu:
       url: "/projects/dndshop"
       parent: "projects"
 
-    - identifier: "carport"
-      name: "Carport Webshop"
-      url: "/projects/carport"
+    - identifier: "AIDA"
+      name: "AIDA"
+      url: "/projects/AIDA"
       parent: "projects"
 
     - identifier: "about"
