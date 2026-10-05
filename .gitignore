@@ -1,3 +1,8 @@
 public/
 resources/
 .hugo_build.lock
+backend/target/
+backend/.env
+backend/data/
+.test-output/
+tests/frontend/node_modules/

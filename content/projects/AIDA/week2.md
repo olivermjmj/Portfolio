@@ -1,86 +1,31 @@
 ---
-title: "RAG 1"
+title: "RAG"
 ---
 
-# Week 2 – Project Ideation and Planning
+## What is a RAG bot
+A Retrieval-Augmented Generation bot (RAG) is a technique that combines an LLM with an external knowledge base to make its answers more accurate, up to date and grounded in specific information.
 
-## Ideas
-- Idle game:
-  - Initial idea was an idle game with a player-driven market
-  - Appealing due to the complexity of economy and player interaction
-  - Dropped because it would have minimal web/HTML focus → mostly backend + possible leaderboard
+This is done by giving the RAG bot access to specific resources that it can retrieve information from before answering a question. These resources can be different file types such as Markdown files, PDFs or other documents, but for my implementation I primarily use Markdown files (`.md`).
 
-- Fitness tracker:
-  - Considered briefly as a “safe” option
-  - Dropped → too generic and lacks domain complexity
+Instead of giving the LLM every document at once, the documents are split into smaller pieces called **chunks**. When a user asks a question, the RAG system searches through these chunks and retrieves the ones that are most relevant to the question.
 
-- D&D Shop:
-  - Selected as final idea
-  - Inspired by something like Faraos Cigarer
-  - Contains many relationships (items, orders, users, etc.)
+The relevant chunks are then given to the LLM as additional context, which it can use when generating its answer.
 
-Reflection:  
-I initially focused on what I found interesting (the idle game), but quickly realized it did not align well with the assignment requirements. This forced me to shift focus from “what I want to build” to “what fits academically”.
+## My implementation of a RAG
+For creating and updating my RAG, I take my Markdown files and let Dify handle the initial chunking and knowledge base: [https://dify.ai/](https://dify.ai/)
 
----
+Later on I plan to experiment with **Chonkie**: [https://github.com/feyninc/chonkie](https://github.com/feyninc/chonkie)
 
-## Decisions
-- Chose D&D Shop over simpler or niche ideas
-- Prioritized domain complexity over simplicity
+The reason for this is that I want more control over how my Markdown files are chunked and be able to compare whether a more specialized chunking strategy improves the quality of the retrieval compared to the default Dify setup.
 
-Reflection:  
-The decision only really “clicked” after discussing it with family. That helped confirm that the project actually has enough depth, even though I initially doubted it.
+For reranking I currently use **Jina AI**: [https://jina.ai/](https://jina.ai/)
 
----
+The reason for using Jina AI is mainly that they offer a very generous free tier, which currently gives access to 10 million tokens. This makes it useful for experimenting with reranking without having to worry too much about cost while developing the RAG.
 
-## Thinking
-- Started with interest → then evaluated complexity
-- Early considerations included:
-  - relationships
-  - database structure
-  - overall project depth
+The reranker is used after the initial retrieval. Dify might for example retrieve several chunks that it believes are relevant to the user's question, where the reranker then looks at those results again and sorts them based on how relevant they actually are.
 
-Reflection:  
-My mindset shifted from “what do I want to make” to “what can sustain a semester project”. That change was important in landing on a stronger concept.
+The flow therefore looks roughly like this:
 
----
+`User question → Retrieval → Relevant chunks → Reranking → LLM → Answer`
 
-## Work
-- Brainstormed using diagrams
-- Discussed ideas with family and LLMs
-- Took notes continuously (also when ideas came up unexpectedly)
-
-Reflection:  
-The process was iterative rather than linear. The final decision was the result of multiple small adjustments and reflections.
-
----
-
-## Challenges
-- Uncertainty about whether the D&D Shop would be complex enough
-- Concern about project scope (too simple vs too large)
-
-Reflection:  
-It was difficult to evaluate scope alone. Discussing it with others was essential to confirm that the idea had enough depth.
-
----
-
-## Risk & Technical Concerns
-- Concern about relying on external APIs
-- Risk of API instability during exam/demo
-
-- Plan:
-  - Implement scheduled data synchronization
-  - Use a cron job to update data regularly (e.g. weekly)
-  - Reduce dependency on live API calls at runtime
-
-Reflection:  
-The project feels both exciting and risky. The API integration adds realism but also introduces instability. Designing the system to be more robust from the start feels necessary.
-
----
-
-## Next Step
-- Define core entities
-- Design initial ERD
-
-Reflection:  
-I am now moving from idea → concrete system design, which feels like the natural next step.
+Later on I would like to replace the hosted reranking model with something that I can self-host. This would give me more control over the system and remove the dependency on an external API for reranking, but for now Jina AI works well for what I need.

@@ -11,6 +11,10 @@ author:
   email: "olivermjmj@outlook.dk"
   
 params:
+  chatbot:
+    enabled: true
+    # Public HTTPS URL, e.g. https://chat.example.dk (never put API keys here).
+    apiBase: ""
   defaultTheme: "dark"
   EnableThemeToggle: true
   homeTitle: "Oliver Møller-Jensen"

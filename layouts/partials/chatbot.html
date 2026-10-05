@@ -1,0 +1,25 @@
+{{ if .Site.Params.chatbot.enabled }}
+<div class="portfolio-chat" id="portfolio-chat" data-api-base="{{ .Site.Params.chatbot.apiBase }}" data-portfolio-base="{{ .Site.BaseURL }}">
+  <section class="pc-panel" id="pc-panel" role="dialog" aria-labelledby="pc-title" hidden>
+    <header class="pc-header">
+      <div><span class="pc-eyebrow">OLIVERS PORTFOLIO</span><h2 id="pc-title">Spørg om mine projekter</h2></div>
+      <button class="pc-icon-button" id="pc-close" type="button" aria-label="Luk chat">×</button>
+    </header>
+    <div class="pc-intro">Hej! Jeg er Olivers AI-assistent. Spørg om projekter og opgaver — jeg finder svar i materialet og viser kilder.</div>
+    <div class="pc-messages" id="pc-messages" role="log" aria-label="Samtale" aria-live="polite" aria-relevant="additions"></div>
+    <p class="pc-status" id="pc-status" role="status" aria-live="polite"></p>
+    <form id="pc-form" class="pc-form">
+      <label for="pc-input">Dit spørgsmål</label>
+      <textarea id="pc-input" rows="2" maxlength="250" placeholder="Hvad har Oliver lavet i AIDA?" aria-describedby="pc-counter pc-privacy" required></textarea>
+      <div class="pc-actions"><span id="pc-counter">0 / 250</span><button id="pc-send" type="submit">Send <span aria-hidden="true">↗</span></button></div>
+    </form>
+    <footer class="pc-footer"><button id="pc-reset" type="button">Ny samtale</button><p id="pc-privacy">AI kan tage fejl. Spørgsmål sendes til Dify og OpenAI. Undlad personlige oplysninger.</p></footer>
+  </section>
+  <button class="pc-launcher" id="pc-launcher" type="button" aria-controls="pc-panel" aria-expanded="false">
+    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8H4l-2 2v-10a9 9 0 0 1 18 0Z"/><path d="M7 10h8M7 14h5"/></svg>
+    <span>Spørg om projekterne</span>
+  </button>
+</div>
+{{ $js := resources.Get "js/chatbot.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{ end }}

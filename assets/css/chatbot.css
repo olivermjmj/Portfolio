@@ -1,0 +1,59 @@
+.portfolio-chat {
+  --pc-bg: #fff; --pc-surface: #f4f4f6; --pc-text: #25252b; --pc-muted: #62626c;
+  --pc-line: #dcdce2; --pc-accent: #3e386c; --pc-on-accent: #fff;
+  position: fixed; right: 24px; bottom: 24px; z-index: 1000;
+  font: 14px/1.55 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--pc-text); text-align: left; letter-spacing: normal;
+}
+[data-theme="dark"] .portfolio-chat {
+  --pc-bg: #232425; --pc-surface: #303136; --pc-text: #ededf1; --pc-muted: #b9b9c5;
+  --pc-line: #49494f; --pc-accent: #c9baff; --pc-on-accent: #232034;
+}
+.portfolio-chat *, .portfolio-chat *::before, .portfolio-chat *::after { box-sizing: border-box; }
+.portfolio-chat [hidden] { display: none !important; }
+.portfolio-chat button { font: inherit; letter-spacing: normal; cursor: pointer; margin: 0; text-transform: none; }
+.portfolio-chat button:disabled { cursor: not-allowed; opacity: .55; }
+.portfolio-chat :focus-visible { outline: 3px solid var(--pc-accent); outline-offset: 3px; }
+.portfolio-chat .pc-launcher {
+  display: flex; align-items: center; gap: 10px; margin-left: auto; border: 1px solid var(--pc-line);
+  border-radius: 30px; padding: 13px 18px; background: var(--pc-bg); color: var(--pc-text);
+  box-shadow: 0 6px 24px #0003; font-weight: 600;
+}
+.pc-launcher svg { flex-shrink: 0; color: var(--pc-accent); }
+.pc-panel {
+  display: flex; flex-direction: column; width: 390px; height: min(620px, calc(100dvh - 110px));
+  margin-bottom: 12px; overflow: hidden; background: var(--pc-bg); border: 1px solid var(--pc-line);
+  border-radius: 18px; box-shadow: 0 16px 64px #0004;
+}
+.pc-header { display: flex; align-items: center; justify-content: space-between; padding: 19px 20px 14px; border-bottom: 1px solid var(--pc-line); }
+.pc-eyebrow { font-size: 10px; letter-spacing: .14em; color: var(--pc-muted); }
+.portfolio-chat h2 { margin: 4px 0 0; font-size: 17px; line-height: 1.4; letter-spacing: normal; }
+.portfolio-chat .pc-icon-button { border: 0; background: transparent; color: var(--pc-muted); font-size: 28px; padding: 0; width: 40px; height: 40px; }
+.pc-intro { margin: 16px 18px 6px; padding: 12px 14px; background: var(--pc-surface); border-radius: 3px 12px 12px; font-size: 13px; }
+.pc-messages { flex: 1; min-height: 60px; overflow-y: auto; overscroll-behavior: contain; padding: 8px 18px; }
+.pc-message { margin: 10px 0; padding: 11px 13px; border-radius: 3px 12px 12px; background: var(--pc-surface); overflow-wrap: anywhere; }
+.pc-message p { margin: 0; white-space: pre-wrap; }
+.pc-message[data-role="user"] { background: var(--pc-accent); color: var(--pc-on-accent); margin-left: 24px; border-radius: 12px 3px 12px 12px; }
+.pc-speaker { display: block; font-size: 10px; font-weight: 700; margin-bottom: 5px; }
+.pc-sources { border-top: 1px solid var(--pc-line); margin: 10px 0 0; padding: 8px 0 0; list-style: none; font-size: 12px; }
+.pc-sources li { margin: 4px 0; }
+.pc-sources a { color: var(--pc-accent); text-decoration: underline; }
+.pc-status { color: var(--pc-muted); font-size: 12px; margin: 0; padding: 0 20px; }
+.pc-status:not(:empty) { padding-top: 6px; padding-bottom: 8px; }
+.pc-form { border-top: 1px solid var(--pc-line); padding: 12px 18px 8px; }
+.pc-form label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+.portfolio-chat textarea { width: 100%; padding: 10px; border: 1px solid var(--pc-line); background: var(--pc-bg); color: var(--pc-text); border-radius: 8px; resize: none; font: inherit; }
+.portfolio-chat textarea::placeholder { color: var(--pc-muted); }
+.pc-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; }
+.pc-actions > span { color: var(--pc-muted); font-size: 11px; }
+.portfolio-chat #pc-send { background: var(--pc-accent); color: var(--pc-on-accent); border: 0; border-radius: 8px; padding: 7px 16px; font-weight: 600; }
+.pc-footer { padding: 4px 18px 13px; }
+.portfolio-chat #pc-reset { background: none; border: none; padding: 3px 0; color: var(--pc-muted); text-decoration: underline; font-size: 12px; }
+.pc-footer p { font-size: 10px; line-height: 1.5; color: var(--pc-muted); margin: 6px 0 0; }
+@media (max-width: 480px) {
+  .portfolio-chat { right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); left: 12px; }
+  .pc-panel { width: 100%; height: min(620px, calc(100dvh - 96px)); }
+  .portfolio-chat textarea { font-size: 16px; }
+  .portfolio-chat .pc-launcher { padding: 11px 16px; }
+}
+@media (prefers-reduced-motion: no-preference) { .pc-launcher { transition: box-shadow .15s; } .pc-launcher:hover { box-shadow: 0 6px 30px #0005; } }

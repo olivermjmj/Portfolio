@@ -1,0 +1,32 @@
+name: portfolio-chat
+services:
+  chat:
+    build: .
+    env_file: .env
+    environment:
+      BUDGET_DB: /data/budget.db
+      PORT: "8080"
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - budget:/data
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      # SQLite extracts its JNI library here; it needs executable mappings.
+      - /tmp:rw,exec,nosuid,size=64m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 512m
+    cpus: 1.0
+    healthcheck:
+      test: ["CMD", "java", "-jar", "/app/chat.jar", "--healthcheck"]
+      interval: 60s
+      timeout: 10s
+      start_period: 30s
+      retries: 3
+volumes:
+  budget:
+    name: portfolio-chat-budget

@@ -1,0 +1,4 @@
+{{ if .Site.Params.chatbot.enabled }}
+  {{ $css := resources.Get "css/chatbot.css" | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ end }}

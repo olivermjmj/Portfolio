@@ -1,0 +1,7 @@
+# Replace with your API hostname; its DNS must point to the server.
+chat.example.dk {
+    reverse_proxy 127.0.0.1:8080 {
+        # Overwrite client-supplied headers; backend trusts only the configured proxy peer.
+        header_up X-Real-IP {remote_host}
+    }
+}

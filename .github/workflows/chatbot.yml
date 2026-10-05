@@ -1,0 +1,28 @@
+name: Verify chatbot
+on:
+  pull_request:
+    paths: ['backend/**', 'assets/**', 'layouts/**', 'tests/frontend/**', '.github/workflows/chatbot.yml']
+  push:
+    branches: [main]
+    paths: ['backend/**', 'assets/**', 'layouts/**', 'tests/frontend/**', '.github/workflows/chatbot.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: backend/pom.xml
+      - run: mvn -B -ntp -f backend/pom.xml verify
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: tests/frontend/package-lock.json
+      - run: npm ci --prefix tests/frontend
+      - run: npm test --prefix tests/frontend

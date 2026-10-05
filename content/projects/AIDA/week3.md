@@ -1,3 +1,3 @@
 ---
-title: "RAG 2"
+title: ""
 ---
