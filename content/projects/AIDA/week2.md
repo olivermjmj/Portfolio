@@ -28,4 +28,4 @@ The flow therefore looks roughly like this:
 
 `User question → Retrieval → Relevant chunks → Reranking → LLM → Answer`
 
-Later on I would like to replace the hosted reranking model with something that I can self-host. This would give me more control over the system and remove the dependency on an external API for reranking, but for now Jina AI works well for what I need.
+Later on I would like to replace the hosted reranking model with something that I can self-host. This would give me more control over the system and remove the dependency on an external API for reranking, but for now Jina AI works well for what I need..
